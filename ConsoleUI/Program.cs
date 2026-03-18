@@ -12,7 +12,8 @@ Console.WriteLine("--------------------\n");
 Console.WriteLine("=== Деталі події ===");
 
 // Створення екземплярів класів
-Event techConf = new Event { 
+Event techConf = new Event 
+{ 
     Title = ".NET Meetup 2026", 
     Date = new DateTime(2026, 5, 20), 
     TicketPrice = 550.0 
@@ -31,7 +32,6 @@ Registration reg = new Registration {
 };
 
 // Вивід даних у консоль
-Console.WriteLine($"Подія: {techConf.Title} на дату {techConf.Date:dd.MM.yyyy}");
-Console.WriteLine($"Ціна: {techConf.TicketPrice} грн");
-Console.WriteLine($"Учасник: {user.FullName}, VIP: {user.HasVipStatus}");
-Console.WriteLine($"Статус реєстрації №{reg.RegistrationId}: {(reg.IsConfirmed ? "Підтверджено" : "Очікує")}");
+Console.WriteLine(techConf);
+Console.WriteLine(user);
+Console.WriteLine(reg);

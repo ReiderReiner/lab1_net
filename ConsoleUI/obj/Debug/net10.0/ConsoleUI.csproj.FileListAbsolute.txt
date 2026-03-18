@@ -16,3 +16,4 @@ C:\Users\solod\OneDrive\Документы\KH-1023v_Solod\ConsoleUI\obj\Debug\ne
 C:\Users\solod\OneDrive\Документы\KH-1023v_Solod\ConsoleUI\obj\Debug\net10.0\ConsoleUI.pdb
 C:\Users\solod\OneDrive\Документы\KH-1023v_Solod\ConsoleUI\obj\Debug\net10.0\ConsoleUI.genruntimeconfig.cache
 C:\Users\solod\OneDrive\Документы\KH-1023v_Solod\ConsoleUI\obj\Debug\net10.0\ref\ConsoleUI.dll
+C:\Users\solod\OneDrive\Документы\KH-1023v_Solod\ConsoleUI\obj\Debug\net10.0\ConsoleUI.sourcelink.json
