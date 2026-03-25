@@ -11,4 +11,9 @@ public struct TicketPrice
         Amount = amount;
         Currency = currency;
     }
+
+    public override string ToString()
+    {
+        return $"{Amount} {Currency}";
+    }
 }

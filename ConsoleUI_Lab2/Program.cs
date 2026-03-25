@@ -5,85 +5,74 @@ using System.Diagnostics;
 using System.Linq;
 using Core;
 
-// --- ЗАВДАННЯ 2: Дослідження структур (Value Types) ---
-static void TryModifyStruct(TicketPrice p) 
+static void TryModifyStruct(TicketPrice p)
 {
-    p.Amount += 500; // Змінюємо локальну копію в стеку
+    p.Amount += 500;
+    p.Currency = "USD";
+    Console.WriteLine($"[в середині] {p}");
 }
 
 TicketPrice originalPrice = new TicketPrice(150, "UAH");
+Console.WriteLine($"Оригінал до: {originalPrice}");
 TryModifyStruct(originalPrice);
-// originalPrice.Amount залишиться 150, оскільки структури передаються за значенням
+Console.WriteLine($"Оригінал після: {originalPrice}");
+Console.WriteLine("----------------------------------");
 
-// --- ЗАВДАННЯ 3: Аналіз Boxing/Unboxing та продуктивності ---
-object boxed = 2026; // Boxing
-int unboxed = (int)boxed; // Unboxing
+// boxing/unboxing
+object boxed = (object)2026;
+int unboxed = (int)boxed;
 
 const int iterations = 1_000_000;
-Stopwatch sw = new Stopwatch();
+var sw = new Stopwatch();
 
-// Тест ArrayList (викликає Boxing для кожного int)
-ArrayList arrayList = new ArrayList();
+var arrayList = new ArrayList();
 sw.Start();
 for (int i = 0; i < iterations; i++) arrayList.Add(i);
 sw.Stop();
-long tArrayList = sw.ElapsedMilliseconds;
+var tArray = sw.ElapsedMilliseconds;
 
-// Тест List<int> (узагальнена колекція, без Boxing)
 sw.Restart();
-List<int> genericList = new List<int>();
+var genericList = new List<int>();
 for (int i = 0; i < iterations; i++) genericList.Add(i);
 sw.Stop();
-long tGeneric = sw.ElapsedMilliseconds;
+var tGeneric = sw.ElapsedMilliseconds;
 
-// --- ЗАВДАННЯ 4: Колекція об'єктів (10 івентів) ---
-List<Event> eventList = new List<Event>
+Console.WriteLine($"ArrayList: {tArray} ms, List<int>: {tGeneric} ms, diff: {tArray - tGeneric} ms");
+Console.WriteLine("----------------------------------");
+
+// 10 об’єктів (Event з Core)
+var eventList = new List<Event>
 {
-    new Event("Cyberpunk Night", new DateTime(2026, 05, 10), 450),
-    new Event("Tech Summit", new DateTime(2026, 06, 12), 1200),
-    new Event("C# Meetup", new DateTime(2026, 05, 10), 0),
-    new Event("Hardware Expo", new DateTime(2026, 08, 20), 800),
-    new Event("AI Workshop", new DateTime(2026, 06, 12), 2500),
-    new Event("GameDev Party", new DateTime(2026, 05, 10), 300),
-    new Event("Security Conf", new DateTime(2026, 11, 05), 1500),
-    new Event("Cloud Day", new DateTime(2026, 06, 12), 0),
-    new Event("Retro Gaming", new DateTime(2026, 04, 15), 200),
-    new Event("Networking Hub", new DateTime(2026, 05, 10), 550)
+    new Event { Title="Cyberpunk Night", Date=new DateTime(2026,5,10), TicketPrice=450 },
+    new Event { Title="Tech Summit", Date=new DateTime(2026,6,12), TicketPrice=1200 },
+    new Event { Title="C# Meetup", Date=new DateTime(2026,5,10), TicketPrice=0 },
+    new Event { Title="Hardware Expo", Date=new DateTime(2026,8,20), TicketPrice=800 },
+    new Event { Title="AI Workshop", Date=new DateTime(2026,6,12), TicketPrice=2500 },
+    new Event { Title="GameDev Party", Date=new DateTime(2026,5,10), TicketPrice=300 },
+    new Event { Title="Security Conf", Date=new DateTime(2026,11,5), TicketPrice=1500 },
+    new Event { Title="Cloud Day", Date=new DateTime(2026,6,12), TicketPrice=0 },
+    new Event { Title="Retro Gaming", Date=new DateTime(2026,4,15), TicketPrice=200 },
+    new Event { Title="Networking Hub", Date=new DateTime(2026,5,10), TicketPrice=550 }
 };
 
-// --- ЗАВДАННЯ 5-8: LINQ запити ---
+var expensive = eventList.Where(e => e.TicketPrice > 1000).ToList();
+var sorted = eventList.OrderBy(e => e.Date).ThenBy(e => e.TicketPrice).ToList();
+var titles = eventList.Select(e => e.Title).ToList();
+var freeEvent = eventList.FirstOrDefault(e => e.TicketPrice == 0);
 
-// Фільтрація: події дорожче 1000 грн
-var expensiveEvents = eventList.Where(e => e.Price > 1000).ToList();
+Console.WriteLine("=== Всі події (відсортовані) ===");
+foreach (var e in sorted)
+    Console.WriteLine(e);
 
-// Сортування: спочатку за датою, потім за ціною
-var sortedEvents = eventList
-    .OrderBy(e => e.Date)
-    .ThenBy(e => e.Price)
-    .ToList();
+Console.WriteLine("\n=== Події > 1000 грн ===");
+foreach (var e in expensive)
+    Console.WriteLine(e);
 
-// Проекція: список тільки назв подій
-var eventTitles = eventList.Select(e => e.Title).ToList();
-
-// Пошук: перша безкоштовна подія
-var freeEvent = eventList.FirstOrDefault(e => e.Price == 0);
-
-// --- ЗАВДАННЯ 9: Вивід результатів ---
-Console.WriteLine($"Аналіз Boxing (на $1,000,000$ елементів):");
-Console.WriteLine($"- ArrayList: {tArrayList} ms");
-Console.WriteLine($"- List<int>: {tGeneric} ms");
-Console.WriteLine($"- Різниця: {tArrayList - tGeneric} ms\n");
-
-Console.WriteLine("----------------------------------------------------------");
-Console.WriteLine("| {0,-18} | {1,-10} | {2,-10} |", "Назва події", "Дата", "Ціна");
-Console.WriteLine("----------------------------------------------------------");
-foreach (var ev in sortedEvents)
-{
-    Console.WriteLine("| {0,-18} | {1,10:dd.MM.yyyy} | {2,10} грн |", ev.Title, ev.Date, ev.Price);
-}
-Console.WriteLine("----------------------------------------------------------");
+Console.WriteLine("\n=== Назви подій ===");
+foreach (var t in titles)
+    Console.WriteLine(t);
 
 if (freeEvent != null)
-    Console.WriteLine($"\nЗнайдено першу вільну подію: {freeEvent.Title}");
+    Console.WriteLine($"\nПерша безкоштовна подія: {freeEvent.Title}");
 else
-    Console.WriteLine("\nВільних подій не знайдено.");
+    Console.WriteLine("\nБезкоштовних подій нема.");
