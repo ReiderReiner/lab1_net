@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\solod\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj",
-      "projectName": "Core",
-      "projectPath": "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj",
+      "projectUniqueName": "E:\\KH1023a_Solod\\lab1_net\\ConsoleUI_Lab4\\ConsoleUI_Lab4.csproj",
+      "projectName": "ConsoleUI_Lab4",
+      "projectPath": "E:\\KH1023a_Solod\\lab1_net\\ConsoleUI_Lab4\\ConsoleUI_Lab4.csproj",
       "packagesPath": "C:\\Users\\solod\\.nuget\\packages\\",
-      "outputPath": "E:\\KH1023a_Solod\\lab1_net\\Core\\obj\\",
+      "outputPath": "E:\\KH1023a_Solod\\lab1_net\\ConsoleUI_Lab4\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\solod\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -31,7 +50,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj": {
+              "projectPath": "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

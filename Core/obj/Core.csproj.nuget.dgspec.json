@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\solod\\OneDrive\\Документы\\KH-1023v_Solod\\Core\\Core.csproj": {}
+    "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\solod\\OneDrive\\Документы\\KH-1023v_Solod\\Core\\Core.csproj": {
+    "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\solod\\OneDrive\\Документы\\KH-1023v_Solod\\Core\\Core.csproj",
+        "projectUniqueName": "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\solod\\OneDrive\\Документы\\KH-1023v_Solod\\Core\\Core.csproj",
+        "projectPath": "E:\\KH1023a_Solod\\lab1_net\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\solod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\solod\\OneDrive\\Документы\\KH-1023v_Solod\\Core\\obj\\",
+        "outputPath": "E:\\KH1023a_Solod\\lab1_net\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\solod\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\solod\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
@@ -61,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
