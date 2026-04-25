@@ -6,6 +6,8 @@ namespace Core
     {
         public bool IsVipZoneAvailable { get; set; }
 
+        public ConcertEvent() { }
+
         public ConcertEvent(string title, DateTime date, double basePrice, bool isVip) 
             : base(title, date, basePrice)
         {

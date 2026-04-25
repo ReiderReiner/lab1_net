@@ -6,6 +6,8 @@ namespace Core
     {
         public int CoffeeBreaksCount { get; set; }
 
+        public ConferenceEvent() { }
+
         public ConferenceEvent(string title, DateTime date, double basePrice, int coffeeBreaks) 
             : base(title, date, basePrice)
         {

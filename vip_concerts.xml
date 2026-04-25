@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Events>
+  <Concert>
+    <Title>Rock Festival</Title>
+    <Date>15.08.2026</Date>
+    <Price>1200</Price>
+    <VipZone>true</VipZone>
+  </Concert>
+</Events>

@@ -1,12 +1,17 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Core
 {
+    [JsonDerivedType(typeof(ConcertEvent), "concert")]
+    [JsonDerivedType(typeof(ConferenceEvent), "conference")]
     public abstract class EventBase : IShow
     {
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public double BasePrice { get; set; }
+
+        protected EventBase() { }
 
         protected EventBase(string title, DateTime date, double basePrice)
         {

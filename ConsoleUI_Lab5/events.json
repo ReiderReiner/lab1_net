@@ -1,0 +1,30 @@
+[
+  {
+    "$type": "concert",
+    "IsVipZoneAvailable": true,
+    "Title": "Rock Festival",
+    "Date": "2026-08-15T00:00:00",
+    "BasePrice": 800
+  },
+  {
+    "$type": "concert",
+    "IsVipZoneAvailable": false,
+    "Title": "Jazz Night",
+    "Date": "2026-09-20T00:00:00",
+    "BasePrice": 500
+  },
+  {
+    "$type": "conference",
+    "CoffeeBreaksCount": 3,
+    "Title": "Tech Summit",
+    "Date": "2026-10-05T00:00:00",
+    "BasePrice": 1200
+  },
+  {
+    "$type": "conference",
+    "CoffeeBreaksCount": 2,
+    "Title": "Business Forum",
+    "Date": "2026-11-12T00:00:00",
+    "BasePrice": 900
+  }
+]
