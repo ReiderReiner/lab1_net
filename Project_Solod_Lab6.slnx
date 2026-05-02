@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ConsoleUI_Lab6/ConsoleUI_Lab6.csproj" />
+  <Project Path="Core/Core.csproj" />
+</Solution>
