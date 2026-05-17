@@ -1,4 +1,9 @@
 <Solution>
-  <Project Path="ConsoleUI/ConsoleUI.csproj" />
   <Project Path="Core/Core.csproj" />
+  <Project Path="ConsoleUI/ConsoleUI.csproj" />
+  <Project Path="ConsoleUI_Lab2/ConsoleUI_Lab2.csproj" />
+  <Project Path="ConsoleUI_Lab3/ConsoleUI_Lab3.csproj" />
+  <Project Path="ConsoleUI_Lab4/ConsoleUI_Lab4.csproj" />
+  <Project Path="ConsoleUI_Lab5/ConsoleUI_Lab5.csproj" />
+  <Project Path="ConsoleUI_Lab6/ConsoleUI_Lab6.csproj" />
 </Solution>
