@@ -4,12 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:conv="clr-namespace:WpfEventsUI.Converters"
+        xmlns:vm="clr-namespace:WpfEventsUI.ViewModels"
         mc:Ignorable="d"
         Title="Облік подій (WPF)"
         MinWidth="720"
         MinHeight="420"
         Height="560"
         Width="960">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
     <Window.Resources>
         <conv:EventTypeConverter x:Key="EventTypeConverter" />
         <conv:FinalPriceConverter x:Key="FinalPriceConverter" />
@@ -52,10 +56,17 @@
                        FontWeight="SemiBold"
                        Margin="0,0,0,4" />
             <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
-                <Button Content="Додати" Click="BtnAdd_Click" />
-                <Button Content="Редагувати" Click="BtnEdit_Click" />
-                <Button Content="Видалити" Click="BtnDelete_Click" />
+                <Button Content="Додати" Command="{Binding AddCommand}" />
+                <Button Content="Редагувати" Command="{Binding EditCommand}" />
+                <Button Content="Видалити" Command="{Binding DeleteCommand}" />
+                <Button Content="Зберегти" Command="{Binding SaveCommand}" />
+                <Button Content="Оновити" Command="{Binding LoadCommand}" />
             </StackPanel>
+            <TextBlock Text="{Binding StatusMessage}"
+                       Margin="8,12,0,0"
+                       Foreground="DarkGreen"
+                       TextWrapping="Wrap"
+                       DockPanel.Dock="Bottom" />
         </DockPanel>
 
         <DataGrid x:Name="EventsGrid"
@@ -63,6 +74,7 @@
                   Grid.Column="1"
                   Margin="8"
                   ItemsSource="{Binding Events}"
+                  SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
